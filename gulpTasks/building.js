@@ -4,6 +4,7 @@ const del = require('del');
 const exec = require('child_process').exec;
 const fs = require('fs');
 const gulp = require('gulp');
+const babel = require('gulp-babel');
 const options = require('../gulpfile.js').options;
 const path = require('path');
 const Q = require('bluebird');
@@ -25,18 +26,34 @@ gulp.task('clean-dist', (cb) => {
 
 gulp.task('copy-app-source-files', () => {
     return gulp.src([
-        './main.js',
+        'node_modules/**/*',
+        '!node_modules/electron/',
+        '!node_modules/electron/**/*',
         './clientBinaries.json',
-        './modules/**',
         './tests/**/*.*',
         '!./tests/wallet/*',
         `./icons/${type}/*`,
         './sounds/*',
+        './errorPages/*',
         'customProtocols.js'
     ], {
         base: './'
     })
     .pipe(gulp.dest(`./dist_${type}/app`));
+});
+
+
+gulp.task('transpile-main', () => {
+    return gulp.src('./main.js')
+        .pipe(babel({ presets: ['es2016-node5'] }))
+        .pipe(gulp.dest(`./dist_${type}/app`));
+});
+
+
+gulp.task('transpile-modules', () => {
+    return gulp.src('./modules/**')
+        .pipe(babel({ presets: ['es2016-node5'] }))
+        .pipe(gulp.dest(`./dist_${type}/app/modules`));
 });
 
 
@@ -107,13 +124,13 @@ gulp.task('build-dist', (cb) => {
         homepage: 'https://github.com/ethereum/mist',
         build: {
             appId: `com.ethereum.${type}`,
-            category: 'public.app-category.productivity',
             asar: true,
             directories: {
                 buildResources: '../build',
                 output: '../dist'
             },
             linux: {
+                category: 'WebBrowser',
                 target: [
                     'zip',
                     'deb'
@@ -124,20 +141,24 @@ gulp.task('build-dist', (cb) => {
                     'zip'
                 ]
             },
+            mac: {
+                category: 'public.app-category.productivity',
+            },
             dmg: {
                 background: '../build/dmg-background.jpg',
                 iconSize: 128,
-                contents: [{
-                    x: 441,
-                    y: 448,
-                    type: 'link',
-                    path: '/Applications'
-                },
-                {
-                    x: 441,
-                    y: 142,
-                    type: 'file'
-                }
+                contents: [
+                    {
+                        x: 441,
+                        y: 448,
+                        type: 'link',
+                        path: '/Applications'
+                    },
+                    {
+                        x: 441,
+                        y: 142,
+                        type: 'file'
+                    }
                 ]
             }
         }
@@ -156,6 +177,7 @@ gulp.task('build-dist', (cb) => {
     builder.build({
         targets: builder.createTargets(targets, null, 'all'),
         projectDir: path.join(__dirname, `../dist_${type}`, 'app'),
+        publish: 'never',
         config: {
             afterPack(params) {
                 return Q.try(() => {
@@ -170,6 +192,9 @@ gulp.task('build-dist', (cb) => {
                 });
             }
         }
+    })
+    .catch((err) => {
+        throw new Error(err);
     })
     .finally(() => {
         cb();
@@ -189,6 +214,7 @@ gulp.task('release-dist', (done) => {
     const versionDashed = version.replace(/\./g, '-');
 
     const cp = (inputPath, outputPath) => {
+        console.info(`Copying from ${path.join(distPath, inputPath)} to ${path.join(releasePath, outputPath)}`);
         shell.cp(path.join(distPath, inputPath), path.join(releasePath, outputPath));
     };
 
@@ -202,7 +228,8 @@ gulp.task('release-dist', (done) => {
             break;
         case 'mac':
             cp(
-                path.join('mac', `${applicationName}-${version}.dmg`), `${appNameHypen}-macosx-${versionDashed}.dmg`);
+                path.join('mac', `${applicationName}-${version}.dmg`),
+                `${appNameHypen}-macosx-${versionDashed}.dmg`);
             break;
         case 'linux':
             cp(
@@ -227,7 +254,7 @@ gulp.task('build-nsis', (cb) => {
     const versionParts = version.split('.');
     const versionString = `-DVERSIONMAJOR=${versionParts[0]} -DVERSIONMINOR=${versionParts[1]} -DVERSIONBUILD=${versionParts[2]}`;
 
-    const cmdString = `makensis -V3 ${versionString} ${typeString} ${appNameString} scripts/windows-installer.nsi`;
+    const cmdString = `makensis ${versionString} ${typeString} ${appNameString} scripts/windows-installer.nsi`;
 
     exec(cmdString, cb);
 });

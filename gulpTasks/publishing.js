@@ -57,6 +57,8 @@ gulp.task('upload-binaries', (cb) => {
     // personal access token (public_repo) must be set using travis' ENVs
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
+    console.info('Checking Github releases...');
+
     // query github releases
     got(`https://api.github.com/repos/ethereum/mist/releases?access_token=${GITHUB_TOKEN}`, { json: true })
     // filter draft with current version's tag
@@ -73,7 +75,7 @@ gulp.task('upload-binaries', (cb) => {
             const dir = `dist_${type}/release`;
             const files = fs.readdirSync(dir);
             const filePaths = _.map(files, (file) => { return path.join(dir, file); });
-
+            console.log('Upload files: ', filePaths);
             // check if draft already contains target binaries
             // note: github replaces spaces in filenames with dots
             const existingAssets = _.intersection(files.map((file) => { return file.replace(/\s/g, '.'); }), _.pluck(draft.assets, 'name'));
@@ -91,6 +93,7 @@ gulp.task('upload-binaries', (cb) => {
                 if (draft.body && checksums) {
                     got.patch(`https://api.github.com/repos/ethereum/mist/releases/${draft.id}?access_token=${GITHUB_TOKEN}`, {
                         body: JSON.stringify({
+                            tag_name: `v${version}`,
                             body: `${draft.body}\n\n## Checksums\n\`\`\`\n${checksums.join('')}\`\`\``
                         })
                     });

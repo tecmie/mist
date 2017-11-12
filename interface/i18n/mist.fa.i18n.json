@@ -26,7 +26,7 @@
                 "fullscreen": "Toggle Fullscreen",
                 "default": "Default"
             },
-            "accounts": {
+            "file": {
                 "label": "Accounts",
                 "importPresale": "Import Accounts",
                 "newAccount": "New account",
@@ -35,6 +35,7 @@
                 "backupMist": "Application Data"
             },
             "develop": {
+                "uploadToSwarm": "Upload to Swarm",
                 "label": "Develop",
                 "devTools": "Toggle Developer Tools",
                 "devToolsMistUI": "Mist UI",
@@ -46,7 +47,7 @@
                 "ethereumNode": "Ethereum Node",
                 "network": "Network",
                 "mainNetwork": "Main Network",
-                "startMining": "⛏ Start Mining (Testnet only)",
+                "startMining": "⛏ Start Mining",
                 "stopMining": "⛏ Stop Mining",
                 "openRemix": "Open Remix IDE",
                 "nodeMode": "Chain download",
@@ -80,7 +81,7 @@
             },
             "legacyChain": {
                 "title": "Legacy chain detected",
-                "description": "Your node is currently on the unsupported Ethereum Classic chain. To use this chain use tools provided by the ethereum classic project at\nhttps://ethereumclassic.github.io.\n\nTo revert to the main ethereum chain follow the tutorial here:\nhttps://github.com/ethereum/mist/releases/0.8.2"
+                "description": "Your node is currently on the unsupported Ethereum Classic chain. To use this chain use tools provided by the Ethereum Classic project at\nhttps://ethereumclassic.github.io.\n\nTo revert to the main ethereum chain follow the tutorial here:\nhttps://github.com/ethereum/mist/releases/0.8.2"
             }
         },
         "rightClick": {
@@ -98,8 +99,8 @@
             "testNetwork": "Test-net",
             "privateNetwork": "Private-net",
             "mainnetExplain": "You are on the main Ethereum global network",
-            "testnetExplain": "You are on the testnet, DO NOT SEND any real ether to these addresses",
-            "privatenetExplain": "You are on a private net, DO NOT SEND any real ether to these addresses",
+            "testnetExplain": "You are on the testnet, DO NOT SEND any real Ether to these addresses",
+            "privatenetExplain": "You are on a private net, DO NOT SEND any real Ether to these addresses",
             "unknownnetExplain": "Unable to determine which network you are on",
             "peers": "peers"
         },
@@ -214,7 +215,7 @@
             },
             "onboarding": {
                 "description": "Ethereum is a public blockchain that features a turing complete programming for building solid, decentralized applications.",
-                "goToTestnet": "Use the test network",
+                "goToTestnet": "Use the test network (Rinkeby)",
                 "goToTestnetDescription": "Test the technology freely in a sandboxed testnet, without using real ether.",
                 "gotoMainnet": "Use the main network",
                 "gotoMainnetDescription": "You’ll need some Ether in order to create and execute contracts. Don't worry, we'll help you get some...",
