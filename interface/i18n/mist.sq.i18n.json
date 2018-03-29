@@ -13,7 +13,7 @@
                 "quit": "Dil nga __app__"
             },
             "file": {
-                "label": "Llogari",
+                "label": "Skedari",
                 "importPresale": "Merr llogari",
                 "newAccount": "Llogari e re",
                 "backup": "Ruaj kopje rezervë",
@@ -170,18 +170,10 @@
                 "enterPassword": "Fusni fjalëkalimin",
                 "repeatPassword": "Përsërisni fjalëkalimin",
                 "creating": "Duke krijuar llogari...",
-                "backupHint": "Sigurohuni të ruani edhe fjalëkalimin, edhe skedarët çelës!\n\nMund t'i gjeni këta skedarë duke përdorur menunë kryesore -> Llogaritë -> Ruaj kopje rezervë -> Llogaritë. Ruani një kopje të dosjes \"keystore\" në një vend të sigurt!",
+                "backupHint": "Sigurohuni të ruani edhe fjalëkalimin, edhe skedarët çelës!\n\nMund t'i gjeni këta skedarë duke përdorur menunë kryesore -> Skedari -> Ruaj kopje rezervë -> Llogaritë. Ruani një kopje të dosjes \"keystore\" në një vend të sigurt!",
                 "errors": {
                     "passwordMismatch": "Fjalëkalimet nuk përputhen.",
                     "passwordTooShort": "Krijoni një fjalëkalim më të gjatë"
-                }
-            },
-            "unlockMasterPassword": {
-                "title": "Fusni fjalëkalimin kryesor",
-                "enterPassword": "Fusni fjalëkalimin kryesor",
-                "unlocking": "Duke hapur...",
-                "errors": {
-                    "wrongPassword": "Fjalëkalimi është i gabuar. Provoni përsëri."
                 }
             },
             "sendTransactionConfirmation": {
@@ -239,12 +231,13 @@
                 "accountTitle": "Ngarko",
                 "accountTitleTestnet": "Puno",
                 "etherDescription": "Rrjeti Ethereum bazohet në monedhën e quajtur “Ether”. Nevojitet një sasi e vogël e tij për të bërë ndonjë gjë në rrjetin Ethereum.",
-                "loadItDescription": "Nëse keni Bitcoin ose ndonjë kriptovalutë tjetër, mund t'i këmbeni me ether duke përdorur shapeshift. <br><br> Ne ju rekomandojmë ngarkimin e <strong>0.25 deri 1 ether</strong>.",
+                "loadItDescription": "Nëse keni Bitcoin ose ndonjë kriptovalutë tjetër, mund t'i këmbeni me ether duke përdorur changelly. <br><br> Ne ju rekomandojmë ngarkimin e <strong>0.25 deri 1 ether</strong>.",
                 "mineItDescription": "<strong>Në rrjetin test mund të përftoni ether duke shkuar në menunë <em>Zhvillo</em> dhe duke zgjedhur <em>Fillo të punosh</em>. </strong> <br> <strong> MOS PROVONI Txxx DxxxRGONI ETHER Txxx VxxxRTETxxx Nxxx KxxxTxxx ADRESxxx </strong>",
                 "you": "JU",
                 "etherbase": "Adresa kryesore (etherbase)",
                 "depositBitcoin": "Depozito Bitcoin",
-                "viaShapeshift": "Këmbim i menjëhershëm duke përdorur <a href='https://shapeshift.io/' target='_blank'>Shapeshift</a>",
+                "buyEther": "Buy Ether",
+                "viaChangelly": "Accepts cryptocurrency and credit card via <a href='https://changelly.com/' target='_blank'>Changelly</a>",
                 "learnIt": "Mësoni ndërkohë që prisni",
                 "downloadingBlocks": "Duke shkarkuar blloqe",
                 "syncMessage": "Blloku __displayBlock__ nga __highestBlockString__",

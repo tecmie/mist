@@ -190,18 +190,10 @@
                 "enterPassword": "Introdueix una contrasenya",
                 "repeatPassword": "Repeteix la contrasenya",
                 "creating": "Generant el compte...",
-                "backupHint": "Assegura't que fas una còpia de seguretat dels teus fitxer de claus I contrasenya!\n\nPots trobar el teu fitxer de claus mitjançant el menú principal -> Comptes -> Copia de seguretat -> Comptes. Desa una copia de la carpeta del \"fitxer de claus\" on no puguis perdre-la!",
+                "backupHint": "Assegura't que fas una còpia de seguretat dels teus fitxer de claus I contrasenya!\n\nPots trobar el teu fitxer de claus mitjançant el menú principal -> Fitxer -> Copia de seguretat -> Comptes. Desa una copia de la carpeta del \"fitxer de claus\" on no puguis perdre-la!",
                 "errors": {
                     "passwordMismatch": "Les teves contrasenyes no coincideixen.",
                     "passwordTooShort": "Utilitza una contrasenya més llarga"
-                }
-            },
-            "unlockMasterPassword": {
-                "title": "Introdueix una contrasenya mestra",
-                "enterPassword": "Introdueix contrasenya mestra",
-                "unlocking": "Desbloquejant...",
-                "errors": {
-                    "wrongPassword": "La contrasenya és incorrecta. Torna-ho a provar."
                 }
             },
             "sendTransactionConfirmation": {
@@ -259,12 +251,12 @@
                 "accountTitle": "Carrega'l!",
                 "accountTitleTestnet": "Minar una mica!",
                 "etherDescription": "La xarxa d'ethereum es basa en un token anomenat “Ether”. En necessitaràs una petita quantitat per fer qualsevol cosa a la xarxa d'Ethereum.",
-                "loadItDescription": "Si ja tens Bitcoin, o qualsevol altra criptomoneda, pots canviar-la a Ether fàcilment utilitzant Shapeshift. <br><br> Et recomanem carregar entre <strong>0.25 i 1 Ether</strong>.",
+                "loadItDescription": "Si ja tens Bitcoin, o qualsevol altra criptomoneda, pots canviar-la a Ether fàcilment utilitzant changelly. <br><br> Et recomanem carregar entre <strong>0.25 i 1 Ether</strong>.",
                 "faucetDescription": "La xarxa de test Rinkeby utilitza 'Clique Proof of Authority' com a mecanisme de consens, pertant no hi ha minat. Si vols obtenir una mica d'ether de prova, vés a la Rinkeby Faucet: <strong> faucet.rinkeby.io </strong>",
                 "you": "TU",
-                "etherbase": "Compte principal (etherbase)",
-                "depositBitcoin": "Depositar utilitzant Bitcoin",
-                "viaShapeshift": "Conversió instantània mitjançant <a href='https://shapeshift.io/' target='_blank'>Shapeshift</a>",
+                "etherbase": "Compte principal (etherbase)",                
+                "buyEther": "Buy Ether",
+                "viaChangelly": "Accepts cryptocurrency and credit card via <a href='https://changelly.com/' target='_blank'>Changelly</a>",
                 "learnIt": "Aprèn mentre esperes",
                 "downloadingBlocks": "Descarregant blocs",
                 "syncMessage": "Bloc __displayBlock__ de __highestBlockString__",
